@@ -73,7 +73,8 @@ export const loginUsuario = async (req = request, res = response) => {
 };
 
 export const renovarToken = async (req = request, res = response) => {
+  const { uid, name } = req;
   // Genero token
-  const token = await generarJWT(req.uid, req.name);
-  res.json({ msg: "renew", token });
+  const token = await generarJWT(uid, name);
+  res.json({ ok: true, token });
 };

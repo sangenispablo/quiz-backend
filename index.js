@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 
 // Conexion a mongoDB
 import dbConnection from "./database/config.js";
@@ -14,6 +15,9 @@ const app = express();
 
 // Conexion a MongoDB
 dbConnection();
+
+// Cors
+app.use(cors());
 
 // Directorio Publico "public" en "/"
 app.use(express.static("public"));
