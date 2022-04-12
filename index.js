@@ -6,6 +6,7 @@ import cors from "cors";
 import dbConnection from "./database/config.js";
 // importo las rutas de auth
 import authRouter from "./routes/auth.js";
+import quizRouter from "./routes/quiz.js";
 
 // Para leer las variables de entorno en .env
 dotenv.config();
@@ -26,9 +27,9 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // Rutas
-// TODO: 'auth' // login, register, renew
 // TODO: CRUD 'quiz'
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/quiz", quizRouter);
 
 // Ejecuto el servidor
 app.listen(process.env.PORT, () => {

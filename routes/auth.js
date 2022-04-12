@@ -1,4 +1,4 @@
-import express, { request, response } from "express";
+import express from "express";
 import { check } from "express-validator";
 
 // Mi validador de campos
