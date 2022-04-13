@@ -17,7 +17,22 @@ const router = express.Router();
 router.use(validJwt);
 // rutas
 router.get("/", getQuiz);
-router.post("/", createQuiz);
+router.post(
+  "/",
+  [
+    check("user", "El usuario es obligatorio").not().isEmpty(),
+    check("topic", "El topico es obligatorio").not().isEmpty(),
+    check("questions", "Debe tener al menos una pregunta").isArray().notEmpty(),
+    check("questions.*.description", "Debe tener una descripción la pregunta")
+      .not()
+      .isEmpty(),
+    check("questions.*.answers", "Debe tener al menos una respuesta")
+      .isArray()
+      .notEmpty(),
+    fieldValidators,
+  ],
+  createQuiz
+);
 router.put("/:id", updateQuiz);
 router.delete("/:id", deleteQuiz);
 

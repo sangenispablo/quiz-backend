@@ -5,6 +5,7 @@ export const getQuiz = (req = request, res = response) => {
 };
 
 export const createQuiz = (req = request, res = response) => {
+  console.log(req.body);
   res.json({ ok: true, msg: "create quiz" });
 };
 
